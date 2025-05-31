@@ -1,21 +1,6 @@
 import { useState, useEffect } from 'react';
 import mealsData from '../data/meals.json';
-
-interface Ingredient {
-  name: string;
-  amount: string;
-  unit: string;
-}
-
-interface Meal {
-  id: number;
-  name: string;
-  day: string;
-  time: string;
-  description: string;
-  ingredients: Ingredient[];
-  instructions: string;
-}
+import { Meal } from '../types/meals';
 
 function TodayMeal() {
   const [todayMeal, setTodayMeal] = useState<Meal | null>(null);

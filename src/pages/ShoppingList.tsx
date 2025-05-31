@@ -1,91 +1,75 @@
 import { useState, useEffect } from 'react';
 import mealsData from '../data/meals.json';
+import { Ingredient } from '../types/meals';
 
-interface Ingredient {
-  name: string;
-  amount: string;
-  unit: string;
-}
-
-interface Meal {
-  id: number;
-  name: string;
-  day: string;
-  time: string;
-  description: string;
-  ingredients: Ingredient[];
-  instructions: string;
-}
-
-interface CombinedIngredient {
-  name: string;
-  amounts: { amount: string; unit: string }[];
+interface ShoppingItem extends Ingredient {
+  checked: boolean;
 }
 
 function ShoppingList() {
-  const [ingredients, setIngredients] = useState<CombinedIngredient[]>([]);
-  const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>({});
+  const [shoppingList, setShoppingList] = useState<ShoppingItem[]>([]);
 
   useEffect(() => {
-    const combinedIngredients = mealsData.meals.reduce((acc: { [key: string]: CombinedIngredient }, meal) => {
-      meal.ingredients.forEach(ing => {
-        if (!acc[ing.name]) {
-          acc[ing.name] = {
-            name: ing.name,
-            amounts: []
-          };
-        }
-        acc[ing.name].amounts.push({
-          amount: ing.amount,
-          unit: ing.unit
+    // Combine all ingredients from all meals
+    const allIngredients = mealsData.meals.flatMap(meal => meal.ingredients);
+    
+    // Create a map to combine ingredients with the same name
+    const ingredientMap = new Map<string, ShoppingItem>();
+    
+    allIngredients.forEach(ingredient => {
+      const existing = ingredientMap.get(ingredient.name);
+      if (existing) {
+        // If ingredient exists, combine amounts
+        const newAmount = parseFloat(existing.amount) + parseFloat(ingredient.amount);
+        existing.amount = newAmount.toString();
+      } else {
+        // If ingredient doesn't exist, add it to the map
+        ingredientMap.set(ingredient.name, {
+          ...ingredient,
+          checked: false
         });
-      });
-      return acc;
-    }, {});
-
-    setIngredients(Object.values(combinedIngredients));
+      }
+    });
+    
+    setShoppingList(Array.from(ingredientMap.values()));
   }, []);
 
-  const handleCheckboxChange = (ingredientName: string) => {
-    setCheckedItems(prev => ({
-      ...prev,
-      [ingredientName]: !prev[ingredientName]
-    }));
+  const toggleItem = (index: number) => {
+    setShoppingList(prevList => {
+      const newList = [...prevList];
+      newList[index] = {
+        ...newList[index],
+        checked: !newList[index].checked
+      };
+      return newList;
+    });
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="space-y-6">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Shopping List</h1>
       
-      <div className="space-y-4">
-        {ingredients.map((ingredient, index) => (
-          <div 
-            key={index} 
-            className={`flex items-center space-x-4 p-3 rounded transition-colors ${
-              checkedItems[ingredient.name] ? 'bg-green-50' : 'bg-gray-50'
-            }`}
-          >
-            <input
-              type="checkbox"
-              className="h-5 w-5 text-blue-600 rounded"
-              checked={checkedItems[ingredient.name] || false}
-              onChange={() => handleCheckboxChange(ingredient.name)}
-            />
-            <div>
-              <span className={`font-medium ${checkedItems[ingredient.name] ? 'text-gray-500 line-through' : 'text-gray-800'}`}>
-                {ingredient.name}
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <ul className="space-y-3">
+          {shoppingList.map((item, index) => (
+            <li 
+              key={index}
+              className={`flex items-center p-3 rounded-lg transition-colors ${
+                item.checked ? 'bg-gray-50' : 'bg-white'
+              }`}
+            >
+              <input
+                type="checkbox"
+                checked={item.checked}
+                onChange={() => toggleItem(index)}
+                className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500"
+              />
+              <span className={`ml-3 ${item.checked ? 'line-through text-gray-400' : 'text-gray-700'}`}>
+                {item.amount} {item.unit} {item.name}
               </span>
-              <div className="text-sm text-gray-600">
-                {ingredient.amounts.map((amount, i) => (
-                  <span key={i}>
-                    {i > 0 && ' + '}
-                    {amount.amount} {amount.unit}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

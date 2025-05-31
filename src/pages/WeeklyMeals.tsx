@@ -1,10 +1,5 @@
 import mealsData from '../data/meals.json';
-
-interface Ingredient {
-  name: string;
-  amount: string;
-  unit: string;
-}
+import { Ingredient } from '../types/meals';
 
 function WeeklyMeals() {
   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
