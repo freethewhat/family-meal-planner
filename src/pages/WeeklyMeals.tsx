@@ -6,16 +6,6 @@ interface Ingredient {
   unit: string;
 }
 
-interface Meal {
-  id: number;
-  name: string;
-  day: string;
-  time: string;
-  description: string;
-  ingredients: Ingredient[];
-  instructions: string;
-}
-
 function WeeklyMeals() {
   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   
