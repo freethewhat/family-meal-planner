@@ -27,7 +27,7 @@ function WeeklyMeals() {
                       <span>{meal.time}</span>
                     </div>
                   </div>
-                  <div className="text-gray-600">
+                  <div className="text-gray-600 mb-6">
                     <p className="mb-2 font-medium">Ingredients:</p>
                     <ul className="list-disc list-inside space-y-1">
                       {meal.ingredients.map((ingredient, index) => (
@@ -36,6 +36,12 @@ function WeeklyMeals() {
                         </li>
                       ))}
                     </ul>
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-semibold text-gray-700 mb-2">Instructions</h2>
+                    <div className="whitespace-pre-line text-gray-600">
+                      {meal.instructions}
+                    </div>
                   </div>
                 </div>
               ) : (
