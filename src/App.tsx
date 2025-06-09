@@ -1,7 +1,8 @@
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import TodayMeal from './pages/TodayMeal';
 import WeeklyMeals from './pages/WeeklyMeals';
 import ShoppingList from './pages/ShoppingList';
+import MealDetail from './pages/MealDetail';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/today" element={<TodayMeal />} />
             <Route path="/weekly" element={<WeeklyMeals />} />
             <Route path="/shopping" element={<ShoppingList />} />
+            <Route path="/meal/:mealId" element={<MealDetail />} />
           </Routes>
         </main>
       </div>

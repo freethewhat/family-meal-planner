@@ -6,6 +6,27 @@
       "day": "Tuesday",
       "time": "5 minutes prep + 15 minutes cook",
       "description": "One-pot meal with frozen vegetables and pre-seasoned chicken",
+      "servings": {
+        "count": 4,
+        "size": "1.5 cups"
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 450,
+          "protein": 35,
+          "carbohydrates": 45,
+          "fat": 12,
+          "fiber": 6,
+          "sodium": 480
+        },
+        "dailyValues": {
+          "protein": "70%",
+          "fiber": "24%",
+          "vitaminA": "45%",
+          "vitaminC": "60%",
+          "iron": "15%"
+        }
+      },
       "ingredients": [
         { "name": "Frozen chicken breasts", "amount": "1.5", "unit": "lbs" },
         { "name": "Frozen mixed vegetables (no sauce)", "amount": "1", "unit": "bag 16oz" },

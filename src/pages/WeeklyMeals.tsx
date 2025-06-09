@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import mealsData from '../data/meals.json';
 
 function WeeklyMeals() {
@@ -18,7 +19,9 @@ function WeeklyMeals() {
               {meal ? (
                 <div>
                   <div className="mb-4">
-                    <h3 className="text-xl font-medium text-gray-800">{meal.name}</h3>
+                    <Link to={`/meal/${meal.id}`} className="text-xl font-medium text-gray-800 hover:text-blue-600">
+                      {meal.name}
+                    </Link>
                     <p className="text-gray-600 mt-1">{meal.description}</p>
                     <div className="flex items-center mt-2 text-gray-500">
                       <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
