@@ -1,15 +1,42 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import mealsData from '../data/meals.json';
 import { Meal } from '../types/meals';
 
 function TodayMeal() {
   const [todayMeal, setTodayMeal] = useState<Meal | null>(null);
+  const [servingsMultiplier, setServingsMultiplier] = useState(1);
+
+  const adjustedServings = useMemo(() => {
+    return todayMeal ? todayMeal.servings * servingsMultiplier : 0;
+  }, [todayMeal, servingsMultiplier]);
+
+  const adjustedNutrition = useMemo(() => {
+    if (!todayMeal?.nutrition) return null;
+    return {
+      calories: Math.round(todayMeal.nutrition.per_serving.calories * servingsMultiplier),
+      protein_g: Math.round(todayMeal.nutrition.per_serving.protein_g * servingsMultiplier * 10) / 10,
+      carbs_g: Math.round(todayMeal.nutrition.per_serving.carbs_g * servingsMultiplier * 10) / 10,
+      net_carbs_g: Math.round(todayMeal.nutrition.per_serving.net_carbs_g * servingsMultiplier * 10) / 10,
+      fiber_g: Math.round(todayMeal.nutrition.per_serving.fiber_g * servingsMultiplier * 10) / 10,
+      sugar_g: Math.round(todayMeal.nutrition.per_serving.sugar_g * servingsMultiplier * 10) / 10,
+      fat_g: Math.round(todayMeal.nutrition.per_serving.fat_g * servingsMultiplier * 10) / 10,
+      saturated_fat_g: Math.round(todayMeal.nutrition.per_serving.saturated_fat_g * servingsMultiplier * 10) / 10,
+      sodium_mg: Math.round(todayMeal.nutrition.per_serving.sodium_mg * servingsMultiplier)
+    };
+  }, [todayMeal, servingsMultiplier]);
 
   useEffect(() => {
     const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
     const meal = mealsData.meals.find(m => m.day === today);
     setTodayMeal(meal || null);
   }, []);
+
+  const handleServingsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseFloat(e.target.value);
+    if (value > 0 && todayMeal) {
+      setServingsMultiplier(value / todayMeal.servings);
+    }
+  };
 
   if (!todayMeal) {
     return (
@@ -33,13 +60,65 @@ function TodayMeal() {
       </div>
       
       <div className="mb-6">
+        <div className="flex items-center gap-4">
+          <h2 className="text-xl font-semibold text-gray-700">Servings</h2>
+          <div className="flex items-center gap-2">
+            <input
+              type="number"
+              min="1"
+              step="1"
+              value={adjustedServings}
+              onChange={handleServingsChange}
+              className="w-20 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <span className="text-gray-600">servings</span>
+          </div>
+        </div>
+      </div>
+
+      {todayMeal.nutrition && adjustedNutrition && (
+        <div className="mb-6">
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">Nutrition (total for {adjustedServings} servings)</h2>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <p className="text-gray-600">Calories: {adjustedNutrition.calories}</p>
+              <p className="text-gray-600">Protein: {adjustedNutrition.protein_g}g</p>
+              <p className="text-gray-600">Carbs: {adjustedNutrition.carbs_g}g</p>
+              <p className="text-gray-600">Net Carbs: {adjustedNutrition.net_carbs_g}g</p>
+            </div>
+            <div>
+              <p className="text-gray-600">Fat: {adjustedNutrition.fat_g}g</p>
+              <p className="text-gray-600">Saturated Fat: {adjustedNutrition.saturated_fat_g}g</p>
+              <p className="text-gray-600">Fiber: {adjustedNutrition.fiber_g}g</p>
+              <p className="text-gray-600">Sodium: {adjustedNutrition.sodium_mg}mg</p>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      <div className="mb-6">
         <h2 className="text-xl font-semibold text-gray-700 mb-2">Ingredients</h2>
         <ul className="list-disc list-inside space-y-1">
-          {todayMeal.ingredients.map((ingredient, index) => (
-            <li key={index} className="text-gray-600">
-              {ingredient.amount} {ingredient.unit} {ingredient.name}
-            </li>
-          ))}
+          {todayMeal.ingredients.map((ingredient, index) => {
+            // Skip ingredients with "to taste" amount
+            if (ingredient.amount === "to taste") {
+              return (
+                <li key={index} className="text-gray-600">
+                  {ingredient.name}
+                </li>
+              );
+            }
+
+            // Calculate adjusted amount
+            const originalAmount = parseFloat(ingredient.amount);
+            const adjustedAmount = originalAmount * servingsMultiplier;
+            
+            return (
+              <li key={index} className="text-gray-600">
+                {adjustedAmount.toFixed(1)} {ingredient.unit} {ingredient.name}
+              </li>
+            );
+          })}
         </ul>
       </div>
 
