@@ -47,15 +47,15 @@ function ShoppingList() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold text-primary-800 mb-6">Shopping List</h1>
+      <h1 className="text-3xl font-bold text-primary-800 dark:text-primary-100 mb-6">Shopping List</h1>
       
-      <div className="bg-white rounded-lg shadow-md p-6 border border-primary-100">
+      <div className="bg-white dark:bg-primary-800 rounded-lg shadow-md p-6 border border-primary-100 dark:border-primary-700">
         <ul className="space-y-3">
           {shoppingList.map((item, index) => (
             <li 
               key={index}
               className={`flex items-center p-3 rounded-lg transition-colors ${
-                item.checked ? 'bg-primary-50' : 'bg-white'
+                item.checked ? 'bg-primary-50 dark:bg-primary-700' : 'bg-white dark:bg-primary-800'
               }`}
             >
               <input
@@ -64,7 +64,7 @@ function ShoppingList() {
                 onChange={() => toggleItem(index)}
                 className="w-5 h-5 text-accent-500 rounded focus:ring-accent-500"
               />
-              <span className={`ml-3 ${item.checked ? 'line-through text-primary-400' : 'text-primary-700'}`}>
+              <span className={`ml-3 ${item.checked ? 'line-through text-primary-400 dark:text-primary-500' : 'text-primary-700 dark:text-primary-200'}`}>
                 {item.amount} {item.unit} {item.name}
               </span>
             </li>

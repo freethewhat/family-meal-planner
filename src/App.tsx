@@ -4,6 +4,7 @@ import TodayMeal from './pages/TodayMeal';
 import WeeklyMeals from './pages/WeeklyMeals';
 import ShoppingList from './pages/ShoppingList';
 import MealDetail from './pages/MealDetail';
+import ThemeToggle from './components/ThemeToggle';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,35 +15,39 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-primary-50">
-        <nav className="bg-white shadow-md border-b border-primary-200">
+      <div className="min-h-screen bg-primary-50 dark:bg-primary-900 transition-colors">
+        <nav className="bg-white dark:bg-primary-800 shadow-md border-b border-primary-200 dark:border-primary-700">
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex justify-between">
               <div className="flex items-center py-4">
-                <span className="font-semibold text-primary-800 text-lg">Family Meal Planner</span>
+                <span className="font-semibold text-primary-800 dark:text-primary-100 text-lg">Family Meal Planner</span>
               </div>
               
-              {/* Mobile menu button */}
-              <div className="flex items-center sm:hidden">
-                <button
-                  onClick={toggleMenu}
-                  className="text-primary-600 hover:text-primary-900 focus:outline-none"
-                >
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    {isMenuOpen ? (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    ) : (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                    )}
-                  </svg>
-                </button>
-              </div>
+              <div className="flex items-center space-x-4">
+                <ThemeToggle />
+                
+                {/* Mobile menu button */}
+                <div className="sm:hidden">
+                  <button
+                    onClick={toggleMenu}
+                    className="text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-100 focus:outline-none"
+                  >
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      {isMenuOpen ? (
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      ) : (
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                      )}
+                    </svg>
+                  </button>
+                </div>
 
-              {/* Desktop menu */}
-              <div className="hidden sm:flex items-center space-x-4">
-                <Link to="/today" className="py-4 px-2 text-primary-600 hover:text-primary-900 transition-colors">Today's Meal</Link>
-                <Link to="/weekly" className="py-4 px-2 text-primary-600 hover:text-primary-900 transition-colors">Weekly Plan</Link>
-                <Link to="/shopping" className="py-4 px-2 text-primary-600 hover:text-primary-900 transition-colors">Shopping List</Link>
+                {/* Desktop menu */}
+                <div className="hidden sm:flex items-center space-x-4">
+                  <Link to="/today" className="py-4 px-2 text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-100 transition-colors">Today's Meal</Link>
+                  <Link to="/weekly" className="py-4 px-2 text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-100 transition-colors">Weekly Plan</Link>
+                  <Link to="/shopping" className="py-4 px-2 text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-100 transition-colors">Shopping List</Link>
+                </div>
               </div>
             </div>
 
@@ -51,21 +56,21 @@ function App() {
               <div className="px-2 pt-2 pb-3 space-y-1">
                 <Link
                   to="/today"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-primary-700 hover:text-primary-900 hover:bg-primary-50 transition-colors"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-primary-700 dark:text-primary-200 hover:text-primary-900 dark:hover:text-primary-100 hover:bg-primary-50 dark:hover:bg-primary-700 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Today's Meal
                 </Link>
                 <Link
                   to="/weekly"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-primary-700 hover:text-primary-900 hover:bg-primary-50 transition-colors"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-primary-700 dark:text-primary-200 hover:text-primary-900 dark:hover:text-primary-100 hover:bg-primary-50 dark:hover:bg-primary-700 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Weekly Plan
                 </Link>
                 <Link
                   to="/shopping"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-primary-700 hover:text-primary-900 hover:bg-primary-50 transition-colors"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-primary-700 dark:text-primary-200 hover:text-primary-900 dark:hover:text-primary-100 hover:bg-primary-50 dark:hover:bg-primary-700 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Shopping List

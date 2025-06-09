@@ -41,17 +41,17 @@ function TodayMeal() {
   if (!todayMeal) {
     return (
       <div className="text-center py-8">
-        <h2 className="text-2xl font-bold text-primary-700">No meal planned for today</h2>
+        <h2 className="text-2xl font-bold text-primary-700 dark:text-primary-200">No meal planned for today</h2>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 border border-primary-100">
+    <div className="bg-white dark:bg-primary-800 rounded-lg shadow-md p-4 sm:p-6 border border-primary-100 dark:border-primary-700">
       <div className="mb-4">
-        <h1 className="text-2xl sm:text-3xl font-bold text-primary-800">{todayMeal.name}</h1>
-        <p className="text-primary-600 mt-1 text-sm sm:text-base">{todayMeal.description}</p>
-        <div className="flex items-center mt-2 text-primary-500 text-sm sm:text-base">
+        <h1 className="text-2xl sm:text-3xl font-bold text-primary-800 dark:text-primary-100">{todayMeal.name}</h1>
+        <p className="text-primary-600 dark:text-primary-300 mt-1 text-sm sm:text-base">{todayMeal.description}</p>
+        <div className="flex items-center mt-2 text-primary-500 dark:text-primary-400 text-sm sm:text-base">
           <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
@@ -61,7 +61,7 @@ function TodayMeal() {
       
       <div className="mb-6">
         <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-          <h2 className="text-lg sm:text-xl font-semibold text-primary-700">Servings</h2>
+          <h2 className="text-lg sm:text-xl font-semibold text-primary-700 dark:text-primary-200">Servings</h2>
           <div className="flex items-center gap-2">
             <input
               type="number"
@@ -69,41 +69,41 @@ function TodayMeal() {
               step="1"
               value={adjustedServings}
               onChange={handleServingsChange}
-              className="w-20 px-2 py-1 border border-primary-200 rounded focus:outline-none focus:ring-2 focus:ring-accent-500 text-sm sm:text-base"
+              className="w-20 px-2 py-1 border border-primary-200 dark:border-primary-600 rounded focus:outline-none focus:ring-2 focus:ring-accent-500 text-sm sm:text-base bg-white dark:bg-primary-700 text-primary-900 dark:text-primary-100"
             />
-            <span className="text-primary-600 text-sm sm:text-base">servings</span>
+            <span className="text-primary-600 dark:text-primary-300 text-sm sm:text-base">servings</span>
           </div>
         </div>
       </div>
 
       {todayMeal.nutrition && adjustedNutrition && (
         <div className="mb-6">
-          <h2 className="text-lg sm:text-xl font-semibold text-primary-700 mb-2">Nutrition (total for {adjustedServings} servings)</h2>
+          <h2 className="text-lg sm:text-xl font-semibold text-primary-700 dark:text-primary-200 mb-2">Nutrition (total for {adjustedServings} servings)</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-sm sm:text-base">
             <div>
-              <p className="text-primary-600">Calories: {adjustedNutrition.calories}</p>
-              <p className="text-primary-600">Protein: {adjustedNutrition.protein_g}g</p>
-              <p className="text-primary-600">Carbs: {adjustedNutrition.carbs_g}g</p>
-              <p className="text-primary-600">Net Carbs: {adjustedNutrition.net_carbs_g}g</p>
+              <p className="text-primary-600 dark:text-primary-300">Calories: {adjustedNutrition.calories}</p>
+              <p className="text-primary-600 dark:text-primary-300">Protein: {adjustedNutrition.protein_g}g</p>
+              <p className="text-primary-600 dark:text-primary-300">Carbs: {adjustedNutrition.carbs_g}g</p>
+              <p className="text-primary-600 dark:text-primary-300">Net Carbs: {adjustedNutrition.net_carbs_g}g</p>
             </div>
             <div>
-              <p className="text-primary-600">Fat: {adjustedNutrition.fat_g}g</p>
-              <p className="text-primary-600">Saturated Fat: {adjustedNutrition.saturated_fat_g}g</p>
-              <p className="text-primary-600">Fiber: {adjustedNutrition.fiber_g}g</p>
-              <p className="text-primary-600">Sodium: {adjustedNutrition.sodium_mg}mg</p>
+              <p className="text-primary-600 dark:text-primary-300">Fat: {adjustedNutrition.fat_g}g</p>
+              <p className="text-primary-600 dark:text-primary-300">Saturated Fat: {adjustedNutrition.saturated_fat_g}g</p>
+              <p className="text-primary-600 dark:text-primary-300">Fiber: {adjustedNutrition.fiber_g}g</p>
+              <p className="text-primary-600 dark:text-primary-300">Sodium: {adjustedNutrition.sodium_mg}mg</p>
             </div>
           </div>
         </div>
       )}
       
       <div className="mb-6">
-        <h2 className="text-lg sm:text-xl font-semibold text-primary-700 mb-2">Ingredients</h2>
+        <h2 className="text-lg sm:text-xl font-semibold text-primary-700 dark:text-primary-200 mb-2">Ingredients</h2>
         <ul className="list-disc list-inside space-y-1 text-sm sm:text-base">
           {todayMeal.ingredients.map((ingredient, index) => {
             // Skip ingredients with "to taste" amount
             if (ingredient.amount === "to taste") {
               return (
-                <li key={index} className="text-primary-600">
+                <li key={index} className="text-primary-600 dark:text-primary-300">
                   {ingredient.name}
                 </li>
               );
@@ -114,7 +114,7 @@ function TodayMeal() {
             const adjustedAmount = originalAmount * servingsMultiplier;
             
             return (
-              <li key={index} className="text-primary-600">
+              <li key={index} className="text-primary-600 dark:text-primary-300">
                 {adjustedAmount.toFixed(1)} {ingredient.unit} {ingredient.name}
               </li>
             );
@@ -123,8 +123,8 @@ function TodayMeal() {
       </div>
 
       <div>
-        <h2 className="text-lg sm:text-xl font-semibold text-primary-700 mb-2">Instructions</h2>
-        <div className="whitespace-pre-line text-primary-600 text-sm sm:text-base">
+        <h2 className="text-lg sm:text-xl font-semibold text-primary-700 dark:text-primary-200 mb-2">Instructions</h2>
+        <div className="whitespace-pre-line text-primary-600 dark:text-primary-300 text-sm sm:text-base">
           {todayMeal.instructions}
         </div>
       </div>
