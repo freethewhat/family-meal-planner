@@ -14,19 +14,19 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gray-100">
-        <nav className="bg-white shadow-lg">
+      <div className="min-h-screen bg-primary-50">
+        <nav className="bg-white shadow-md border-b border-primary-200">
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex justify-between">
               <div className="flex items-center py-4">
-                <span className="font-semibold text-gray-500 text-lg">Family Meal Planner</span>
+                <span className="font-semibold text-primary-800 text-lg">Family Meal Planner</span>
               </div>
               
               {/* Mobile menu button */}
               <div className="flex items-center sm:hidden">
                 <button
                   onClick={toggleMenu}
-                  className="text-gray-500 hover:text-gray-900 focus:outline-none"
+                  className="text-primary-600 hover:text-primary-900 focus:outline-none"
                 >
                   <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     {isMenuOpen ? (
@@ -40,9 +40,9 @@ function App() {
 
               {/* Desktop menu */}
               <div className="hidden sm:flex items-center space-x-4">
-                <Link to="/today" className="py-4 px-2 text-gray-500 hover:text-gray-900">Today's Meal</Link>
-                <Link to="/weekly" className="py-4 px-2 text-gray-500 hover:text-gray-900">Weekly Plan</Link>
-                <Link to="/shopping" className="py-4 px-2 text-gray-500 hover:text-gray-900">Shopping List</Link>
+                <Link to="/today" className="py-4 px-2 text-primary-600 hover:text-primary-900 transition-colors">Today's Meal</Link>
+                <Link to="/weekly" className="py-4 px-2 text-primary-600 hover:text-primary-900 transition-colors">Weekly Plan</Link>
+                <Link to="/shopping" className="py-4 px-2 text-primary-600 hover:text-primary-900 transition-colors">Shopping List</Link>
               </div>
             </div>
 
@@ -51,21 +51,21 @@ function App() {
               <div className="px-2 pt-2 pb-3 space-y-1">
                 <Link
                   to="/today"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-primary-700 hover:text-primary-900 hover:bg-primary-50 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Today's Meal
                 </Link>
                 <Link
                   to="/weekly"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-primary-700 hover:text-primary-900 hover:bg-primary-50 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Weekly Plan
                 </Link>
                 <Link
                   to="/shopping"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-primary-700 hover:text-primary-900 hover:bg-primary-50 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Shopping List
