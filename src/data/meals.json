@@ -3,7 +3,7 @@
     {
       "id": 10,
       "name": "Skillet Chicken Fajita Bowls",
-      "day": "Monday",
+      "day": "Wednesday",
       "time": "10 minutes prep + 15 minutes cook",
       "description": "Bold Mexican flavors in a build-your-own bowl style, mild base with optional heat",
       "servings": 4,
@@ -35,7 +35,7 @@
     {
       "id": 11,
       "name": "Lentil & Veggie Curry (Instant Pot)",
-      "day": "Wednesday",
+      "day": "Friday",
       "time": "5 minutes prep + 8 minutes cook + pressure release",
       "description": "A creamy coconut lentil curry that’s hearty, family-friendly, and low spice",
       "servings": 4,
@@ -67,7 +67,7 @@
     {
       "id": 3,
       "name": "No-Cook Protein Bowls",
-      "day": "Thursday",
+      "day": "Moonday",
       "time": "5 minutes assembly",
       "description": "Zero cooking required - perfect for busy weekdays",
       "servings": 4,
