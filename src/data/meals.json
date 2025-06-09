@@ -1,65 +1,89 @@
 {
   "meals": [
     {
-      "id": 1,
-      "name": "Instant Pot Chicken & Vegetables",
-      "day": "Tuesday",
-      "time": "5 minutes prep + 15 minutes cook",
-      "description": "One-pot meal with frozen vegetables and pre-seasoned chicken",
-      "servings": {
-        "count": 4,
-        "size": "1.5 cups"
-      },
+      "id": 10,
+      "name": "Skillet Chicken Fajita Bowls",
+      "day": "Monday",
+      "time": "10 minutes prep + 15 minutes cook",
+      "description": "Bold Mexican flavors in a build-your-own bowl style, mild base with optional heat",
+      "servings": 4,
       "nutrition": {
-        "perServing": {
-          "calories": 450,
-          "protein": 35,
-          "carbohydrates": 45,
-          "fat": 12,
-          "fiber": 6,
-          "sodium": 480
-        },
-        "dailyValues": {
-          "protein": "70%",
-          "fiber": "24%",
-          "vitaminA": "45%",
-          "vitaminC": "60%",
-          "iron": "15%"
+        "per_serving": {
+          "calories": 410,
+          "protein_g": 36,
+          "carbs_g": 22,
+          "net_carbs_g": 18,
+          "fiber_g": 4,
+          "sugar_g": 5,
+          "fat_g": 20,
+          "saturated_fat_g": 4,
+          "sodium_mg": 540
         }
       },
       "ingredients": [
-        { "name": "Frozen chicken breasts", "amount": "1.5", "unit": "lbs" },
-        { "name": "Frozen mixed vegetables (no sauce)", "amount": "1", "unit": "bag 16oz" },
-        { "name": "Instant brown rice", "amount": "3", "unit": "packets" },
-        { "name": "Low-sodium chicken broth", "amount": "1", "unit": "cup" },
-        { "name": "Italian seasoning", "amount": "2", "unit": "tsp" },
-        { "name": "Pre-minced garlic", "amount": "1", "unit": "tsp" }
+        { "name": "Chicken breast (sliced)", "amount": "1.5", "unit": "lbs" },
+        { "name": "Frozen bell pepper & onion mix", "amount": "1", "unit": "bag" },
+        { "name": "Olive oil", "amount": "1", "unit": "tbsp" },
+        { "name": "Chili-lime or fajita seasoning", "amount": "1.5", "unit": "tbsp" },
+        { "name": "Microwave brown rice", "amount": "2", "unit": "packets" },
+        { "name": "Canned black beans (low sodium)", "amount": "1", "unit": "can 15oz" },
+        { "name": "Toppings: avocado, Greek yogurt, lime", "amount": "to taste", "unit": "" },
+        { "name": "Optional: hot sauce or salsa for adults", "amount": "to taste", "unit": "" }
       ],
-      "instructions": "1. Add frozen chicken, broth, garlic, and seasoning to Instant Pot\n2. Pressure cook HIGH 15 minutes, quick release\n3. Shred chicken with forks, add frozen vegetables\n4. Sauté mode 3 minutes to heat vegetables\n5. Heat rice packets in microwave 90 seconds\n6. Serve chicken and vegetables over rice"
+      "instructions": "1. Heat oil in skillet, cook chicken until browned\n2. Add frozen peppers/onions and seasoning, sauté 5–7 mins\n3. Heat beans and rice separately\n4. Build bowls with rice, beans, chicken mixture, and toppings"
     },
     {
-      "id": 2,
-      "name": "Instant Pot Turkey Chili",
-      "day": "Friday",
-      "time": "8 minutes prep + 20 minutes cook",
-      "description": "One-pot meal that makes great leftovers",
+      "id": 11,
+      "name": "Lentil & Veggie Curry (Instant Pot)",
+      "day": "Wednesday",
+      "time": "5 minutes prep + 8 minutes cook + pressure release",
+      "description": "A creamy coconut lentil curry that’s hearty, family-friendly, and low spice",
+      "servings": 4,
+      "nutrition": {
+        "per_serving": {
+          "calories": 390,
+          "protein_g": 19,
+          "carbs_g": 34,
+          "net_carbs_g": 27,
+          "fiber_g": 7,
+          "sugar_g": 5,
+          "fat_g": 18,
+          "saturated_fat_g": 7,
+          "sodium_mg": 420
+        }
+      },
       "ingredients": [
-        { "name": "Ground turkey (93% lean)", "amount": "1", "unit": "lb" },
-        { "name": "Canned diced tomatoes", "amount": "1", "unit": "can 14oz" },
-        { "name": "Mixed canned beans", "amount": "2", "unit": "cans 15oz each" },
-        { "name": "Frozen bell pepper mix", "amount": "1", "unit": "bag" },
-        { "name": "Chili seasoning packet", "amount": "1", "unit": "packet" },
-        { "name": "Low-sodium broth", "amount": "1", "unit": "cup" },
-        { "name": "Greek yogurt", "amount": "1", "unit": "container" }
+        { "name": "Dry green or brown lentils", "amount": "1", "unit": "cup" },
+        { "name": "Coconut milk (light or full-fat)", "amount": "1", "unit": "can 14oz" },
+        { "name": "Frozen spinach or chopped kale", "amount": "1", "unit": "cup" },
+        { "name": "Frozen cauliflower or mixed vegetables", "amount": "1", "unit": "bag" },
+        { "name": "Garlic (minced)", "amount": "1", "unit": "tsp" },
+        { "name": "Curry powder (mild)", "amount": "1.5", "unit": "tbsp" },
+        { "name": "Low-sodium broth", "amount": "2", "unit": "cups" },
+        { "name": "Optional: chili flakes or sambal on side", "amount": "to taste", "unit": "" }
       ],
-      "instructions": "1. Sauté mode: brown turkey in Instant Pot 5 minutes\n2. Add all other ingredients except yogurt\n3. Pressure cook HIGH 20 minutes, quick release\n4. Serve in bowls topped with Greek yogurt\n5. Makes 6+ servings for easy leftovers\n6. Freezes perfectly for future quick meals!"
+      "instructions": "1. Add rinsed lentils, broth, curry powder, garlic, coconut milk, and frozen vegetables to Instant Pot\n2. Stir to combine\n3. Pressure cook on HIGH for 8 minutes, quick release\n4. Stir and serve; add chili flakes to adult portions if desired"
     },
     {
       "id": 3,
       "name": "No-Cook Protein Bowls",
-      "day": "Saturday",
+      "day": "Thursday",
       "time": "5 minutes assembly",
-      "description": "Zero cooking required - perfect for busy weekends",
+      "description": "Zero cooking required - perfect for busy weekdays",
+      "servings": 4,
+      "nutrition": {
+        "per_serving": {
+          "calories": 380,
+          "protein_g": 28,
+          "carbs_g": 22,
+          "net_carbs_g": 18,
+          "fiber_g": 4,
+          "sugar_g": 4,
+          "fat_g": 22,
+          "saturated_fat_g": 3,
+          "sodium_mg": 420
+        }
+      },
       "ingredients": [
         { "name": "Rotisserie chicken (pre-shredded)", "amount": "1", "unit": "container" },
         { "name": "Pre-washed salad kit", "amount": "2", "unit": "bags" },
