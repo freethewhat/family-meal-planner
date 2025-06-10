@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import mealsData from '../data/meals.json';
-import { Meal } from '../types/meals';
 
 function WeeklyMeals() {
   return (
