@@ -41,91 +41,85 @@ function TodayMeal() {
   if (!todayMeal) {
     return (
       <div className="text-center py-8">
-        <h2 className="text-2xl font-bold text-primary-700 dark:text-primary-200">No meal planned for today</h2>
+        <h2 className="text-2xl font-bold text-gray-700">No meal planned for today</h2>
       </div>
     );
   }
 
   return (
-    <div className="bg-white dark:bg-primary-800 rounded-lg shadow-md p-4 sm:p-6 border border-primary-100 dark:border-primary-700">
-      <div className="mb-4">
-        <h1 className="text-2xl sm:text-3xl font-bold text-primary-800 dark:text-primary-100">{todayMeal.name}</h1>
-        <p className="text-primary-600 dark:text-primary-300 mt-1 text-sm sm:text-base">{todayMeal.description}</p>
-        <div className="flex items-center mt-2 text-primary-500 dark:text-primary-400 text-sm sm:text-base">
-          <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span>{todayMeal.time}</span>
-        </div>
-      </div>
+    <div className="space-y-6">
+      <h1 className="text-3xl font-bold text-primary-800 dark:text-primary-100 mb-6">Today's Meal</h1>
       
-      <div className="mb-6">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-          <h2 className="text-lg sm:text-xl font-semibold text-primary-700 dark:text-primary-200">Servings</h2>
-          <div className="flex items-center gap-2">
-            <input
-              type="number"
-              min="1"
-              step="1"
-              value={adjustedServings}
-              onChange={handleServingsChange}
-              className="w-20 px-2 py-1 border border-primary-200 dark:border-primary-600 rounded focus:outline-none focus:ring-2 focus:ring-accent-500 text-sm sm:text-base bg-white dark:bg-primary-700 text-primary-900 dark:text-primary-100"
-            />
-            <span className="text-primary-600 dark:text-primary-300 text-sm sm:text-base">servings</span>
-          </div>
-        </div>
-      </div>
-
-      {todayMeal.nutrition && adjustedNutrition && (
+      <div className="bg-white dark:bg-primary-800 rounded-lg shadow-md p-6 border border-primary-100 dark:border-primary-700">
+        <h2 className="text-2xl font-bold text-primary-800 dark:text-primary-100 mb-2">{todayMeal.name}</h2>
+        <p className="text-primary-600 dark:text-primary-300 mb-4">{todayMeal.description}</p>
+        
         <div className="mb-6">
-          <h2 className="text-lg sm:text-xl font-semibold text-primary-700 dark:text-primary-200 mb-2">Nutrition (total for {adjustedServings} servings)</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-sm sm:text-base">
-            <div>
-              <p className="text-primary-600 dark:text-primary-300">Calories: {adjustedNutrition.calories}</p>
-              <p className="text-primary-600 dark:text-primary-300">Protein: {adjustedNutrition.protein_g}g</p>
-              <p className="text-primary-600 dark:text-primary-300">Carbs: {adjustedNutrition.carbs_g}g</p>
-              <p className="text-primary-600 dark:text-primary-300">Net Carbs: {adjustedNutrition.net_carbs_g}g</p>
-            </div>
-            <div>
-              <p className="text-primary-600 dark:text-primary-300">Fat: {adjustedNutrition.fat_g}g</p>
-              <p className="text-primary-600 dark:text-primary-300">Saturated Fat: {adjustedNutrition.saturated_fat_g}g</p>
-              <p className="text-primary-600 dark:text-primary-300">Fiber: {adjustedNutrition.fiber_g}g</p>
-              <p className="text-primary-600 dark:text-primary-300">Sodium: {adjustedNutrition.sodium_mg}mg</p>
+          <label htmlFor="servings" className="block text-sm font-medium text-primary-700 dark:text-primary-300 mb-2">
+            Number of Servings
+          </label>
+          <input
+            type="number"
+            id="servings"
+            min="1"
+            step="1"
+            value={adjustedServings}
+            onChange={handleServingsChange}
+            className="w-24 px-3 py-2 border border-primary-300 dark:border-primary-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 dark:bg-primary-700 dark:text-primary-100"
+          />
+        </div>
+
+        {todayMeal.nutrition && adjustedNutrition && (
+          <div className="mb-6">
+            <h2 className="text-lg sm:text-xl font-semibold text-primary-700 dark:text-primary-200 mb-2">Nutrition (total for {adjustedServings} servings)</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-sm sm:text-base">
+              <div>
+                <p className="text-primary-600 dark:text-primary-300">Calories: {adjustedNutrition.calories}</p>
+                <p className="text-primary-600 dark:text-primary-300">Protein: {adjustedNutrition.protein_g}g</p>
+                <p className="text-primary-600 dark:text-primary-300">Carbs: {adjustedNutrition.carbs_g}g</p>
+                <p className="text-primary-600 dark:text-primary-300">Net Carbs: {adjustedNutrition.net_carbs_g}g</p>
+              </div>
+              <div>
+                <p className="text-primary-600 dark:text-primary-300">Fat: {adjustedNutrition.fat_g}g</p>
+                <p className="text-primary-600 dark:text-primary-300">Saturated Fat: {adjustedNutrition.saturated_fat_g}g</p>
+                <p className="text-primary-600 dark:text-primary-300">Fiber: {adjustedNutrition.fiber_g}g</p>
+                <p className="text-primary-600 dark:text-primary-300">Sodium: {adjustedNutrition.sodium_mg}mg</p>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-      
-      <div className="mb-6">
-        <h2 className="text-lg sm:text-xl font-semibold text-primary-700 dark:text-primary-200 mb-2">Ingredients</h2>
-        <ul className="list-disc list-inside space-y-1 text-sm sm:text-base">
-          {todayMeal.ingredients.map((ingredient, index) => {
-            // Skip ingredients with "to taste" amount
-            if (ingredient.amount === "to taste") {
+        )}
+        
+        <div className="mb-6">
+          <h2 className="text-lg sm:text-xl font-semibold text-primary-700 dark:text-primary-200 mb-2">Ingredients</h2>
+          <ul className="list-disc list-inside space-y-1 text-sm sm:text-base">
+            {todayMeal.ingredients.map((ingredient, index) => {
+              // Skip ingredients with "to taste" amount
+              if (ingredient.amount === "to taste") {
+                return (
+                  <li key={index} className="text-primary-600 dark:text-primary-300">
+                    {ingredient.name}
+                  </li>
+                );
+              }
+
+              // Calculate adjusted amount
+              const originalAmount = parseFloat(ingredient.amount);
+              const adjustedAmount = originalAmount * servingsMultiplier;
+              
               return (
                 <li key={index} className="text-primary-600 dark:text-primary-300">
-                  {ingredient.name}
+                  {adjustedAmount.toFixed(1)} {ingredient.unit} {ingredient.name}
                 </li>
               );
-            }
+            })}
+          </ul>
+        </div>
 
-            // Calculate adjusted amount
-            const originalAmount = parseFloat(ingredient.amount);
-            const adjustedAmount = originalAmount * servingsMultiplier;
-            
-            return (
-              <li key={index} className="text-primary-600 dark:text-primary-300">
-                {adjustedAmount.toFixed(1)} {ingredient.unit} {ingredient.name}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-
-      <div>
-        <h2 className="text-lg sm:text-xl font-semibold text-primary-700 dark:text-primary-200 mb-2">Instructions</h2>
-        <div className="whitespace-pre-line text-primary-600 dark:text-primary-300 text-sm sm:text-base">
-          {todayMeal.instructions}
+        <div>
+          <h2 className="text-lg sm:text-xl font-semibold text-primary-700 dark:text-primary-200 mb-2">Instructions</h2>
+          <div className="whitespace-pre-line text-primary-600 dark:text-primary-300 text-sm sm:text-base">
+            {todayMeal.instructions}
+          </div>
         </div>
       </div>
     </div>

@@ -35,7 +35,7 @@ function ShoppingList() {
   }, []);
 
   const toggleItem = (index: number) => {
-    setShoppingList(prevList => {
+    setShoppingList((prevList: ShoppingItem[]) => {
       const newList = [...prevList];
       newList[index] = {
         ...newList[index],
@@ -51,7 +51,7 @@ function ShoppingList() {
       
       <div className="bg-white dark:bg-primary-800 rounded-lg shadow-md p-6 border border-primary-100 dark:border-primary-700">
         <ul className="space-y-3">
-          {shoppingList.map((item, index) => (
+          {shoppingList.map((item: ShoppingItem, index: number) => (
             <li 
               key={index}
               className={`flex items-center p-3 rounded-lg transition-colors ${

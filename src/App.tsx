@@ -4,7 +4,6 @@ import TodayMeal from './pages/TodayMeal';
 import WeeklyMeals from './pages/WeeklyMeals';
 import ShoppingList from './pages/ShoppingList';
 import MealDetail from './pages/MealDetail';
-import ThemeToggle from './components/ThemeToggle';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,8 +23,6 @@ function App() {
               </div>
               
               <div className="flex items-center space-x-4">
-                <ThemeToggle />
-                
                 {/* Mobile menu button */}
                 <div className="sm:hidden">
                   <button

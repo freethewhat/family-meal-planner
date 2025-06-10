@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useMemo } from 'react';
 import mealsData from '../data/meals.json';
 
@@ -37,9 +37,6 @@ function MealDetail() {
     return (
       <div className="text-center py-8">
         <h2 className="text-2xl font-bold text-gray-700">Meal not found</h2>
-        <Link to="/weekly" className="text-blue-500 hover:text-blue-700 mt-4 inline-block">
-          Back to Weekly Plan
-        </Link>
       </div>
     );
   }
@@ -47,9 +44,6 @@ function MealDetail() {
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
       <div className="mb-4">
-        <Link to="/weekly" className="text-blue-500 hover:text-blue-700 mb-4 inline-block">
-          ← Back to Weekly Plan
-        </Link>
         <h1 className="text-3xl font-bold text-gray-800">{meal.name}</h1>
         <p className="text-gray-600 mt-1">{meal.description}</p>
         <div className="flex items-center mt-2 text-gray-500">
